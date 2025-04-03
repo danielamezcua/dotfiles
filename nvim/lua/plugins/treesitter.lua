@@ -20,7 +20,7 @@ return {
 			    },
 		    },
 		    -- Enable folding with zc, zo, etc.
-		    fold = { enable = true },
+		    fold = { enable = false },
 		    highlight = {
 			    -- `false` will disable the whole extension
 			    enable = true,
