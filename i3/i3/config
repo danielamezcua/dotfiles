@@ -1,12 +1,6 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-#
-# This config file uses keycodes (bindsym) and was written for the QWERTY
-# layout.
-#
-# To get a config file with the same key positions, but for your current
-# layout, use the i3-config-wizard
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -17,11 +11,14 @@ font pago:Cascadia Code 10
 exec --no-startup-id dex-autostart --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
-exec --no-startup-id picom -b --config ~/.config/picom/picom.conf 
-exec --no-startup-id nitrogen --restore
-exec --no-startup-id dunst
+exec --no-startup-id picom -b --config ~/.config/picom/picom.conf                    # Start compositor
+exec --no-startup-id nitrogen --restore          # Restore wallpaper
+exec --no-startup-id dunst                       # Start notification daemon
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always "setxkbmap -layout us,latam -option grp:win_space_toggle"
+
+# MOUSE SPEED
+exec --no-startup-id xinput --set-prop "Logitech USB Receiver" 'libinput Accel Speed' -0.8 
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -44,8 +41,8 @@ floating_modifier Mod1
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
-# start a terminal
-bindsym Mod1+Return exec kitty
+# start a terminal (using Ghostty from AeroSpace config)
+bindsym Mod1+Return exec ghostty
 
 # kill focused window
 bindsym Mod1+Shift+q kill
@@ -53,48 +50,50 @@ bindsym Mod1+Shift+q kill
 # A more modern dmenu replacement is rofi:
 bindsym Mod1+d exec "rofi -modi drun,run -show drun"
 bindsym Mod1+Tab exec --no-startup-id rofi -show window
-bindsym Mod1+Shift+f exec --no-startup-id rofi -show filebrowser
+# bindsym Mod1+Shift+f exec --no-startup-id rofi -show filebrowser
 
-
-# change focus
+# change focus (vim keys)
 bindsym Mod1+$left focus left
 bindsym Mod1+$down focus down
 bindsym Mod1+$up focus up
 bindsym Mod1+$right focus right
+
+# alternatively, you can use the cursor keys:
 bindsym Mod1+Left focus left
 bindsym Mod1+Down focus down
 bindsym Mod1+Up focus up
 bindsym Mod1+Right focus right
 
-# move focused window
+# move focused window (vim keys)
 bindsym Mod1+Shift+$left move left
 bindsym Mod1+Shift+$down move down
 bindsym Mod1+Shift+$up move up
 bindsym Mod1+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
 bindsym Mod1+Shift+Left move left
 bindsym Mod1+Shift+Down move down
 bindsym Mod1+Shift+Up move up
 bindsym Mod1+Shift+Right move right
 
+# Layout keybindings 
+bindsym Mod1+slash layout toggle split 
+bindsym Mod1+comma layout toggle tabbed stacked
+
 # split in horizontal orientation
 bindsym Mod1+bar split h
 
 # split in vertical orientation
-bindsym Mod1+minus split v
+# bindsym Mod1+minus split v
 
 # enter fullscreen mode for the focused container
 bindsym Mod1+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
-bindsym Mod1+s layout stacking
-bindsym Mod1+w layout tabbed
-bindsym Mod1+e layout toggle split
-
 # toggle tiling / floating
-bindsym Mod1+Shift+space floating toggle
+bindsym Mod1+Shift+f floating toggle
 
 # change focus between tiling / floating windows
-bindsym Mod1+space focus mode_toggle
+# bindsym Mod1+space focus mode_toggle  # Commented out - conflicts with rofi launcher
 
 # focus the parent container
 bindsym Mod1+a focus parent
@@ -157,10 +156,10 @@ bindsym Mod1+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
+        # Pressing left will shrink the window's width.
+        # Pressing right will grow the window's width.
+        # Pressing up will shrink the window's height.
+        # Pressing down will grow the window's height.
         bindsym $left       resize shrink width 10 px or 10 ppt
         bindsym $down       resize grow height 10 px or 10 ppt
         bindsym $up         resize shrink height 10 px or 10 ppt
@@ -179,18 +178,90 @@ mode "resize" {
 }
 
 bindsym Mod1+r mode "resize"
+
+# AeroSpace-style resize (smart resize with +/- keys)
+bindsym Mod1+equal resize grow width 50 px or 5 ppt, resize grow height 50 px or 5 ppt
+bindsym Mod1+minus resize shrink width 50 px or 5 ppt, resize shrink height 50 px or 5 ppt
+
 # Screen locking
 bindsym Mod1+Shift+Escape exec --no-startup-id i3lock -b 000000
 
-# Screenshot with 
+# Screenshot with flameshot
 bindsym Print exec --no-startup-id flameshot full -c
 bindsym Shift+Print exec --no-startup-id flameshot gui
 
+# Service mode (inspired by AeroSpace service mode)
+mode "service" {
+    bindsym Escape mode "default"
+    bindsym r exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.config/i3/workspace-1.json'", mode "default"
+    bindsym f floating toggle, mode "default"
+    bindsym BackSpace [con_id="__focused__"] kill, mode "default"
+    
+    # Volume controls in service mode
+    bindsym Down exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+    bindsym Up exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+    bindsym Shift+Down exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 0%
+    
+    # back to normal
+    bindsym Mod1+Shift+semicolon mode "default"
+}
+
+bindsym Mod1+Shift+semicolon mode "service"
 
 # Floating windows
 for_window [class="Nitrogen"] floating enable
 for_window [class="gnome-calculator"] move scratchpad, resize set 300 400, scratchpad show
 for_window [class="Nautilus"] move scratchpad, scratchpad show
+
+# AeroSpace-inspired workspace assignments
+# Workspace 1: IDE
+assign [class="Cursor"] 1
+assign [class="cursor"] 1
+assign [class="Code"] 1
+assign [class="code"] 1
+assign [class="VSCodium"] 1
+assign [class="Windsurf"] 1
+assign [class="windsurf"] 1
+
+# Workspace 2: Browser/Terminal
+assign [class="Ghostty"] 2
+assign [class="ghostty"] 2
+assign [class="kitty"] 2
+assign [class="Kitty"] 2
+assign [class="Hyper"] 2
+assign [class="Arc"] 2
+assign [title="Arc"] 2
+assign [class="Google-chrome"] 2
+assign [class="Chromium"] 2
+assign [class="chromium"] 2
+assign [class="Firefox"] 2
+assign [class="firefox"] 2
+
+# Workspace 3: LLMs
+assign [class="LM Studio"] 3
+assign [title="Claude"] 3
+assign [class="claude"] 3
+
+# Workspace 4: Dev apps
+assign [class="Docker Desktop"] 4
+assign [class="Postman"] 4
+
+# Workspace 5: Slack/Linear
+assign [class="Linear"] 5
+assign [class="Slack"] 5
+
+# Workspace 6: Mail/Raindrop
+assign [class="Raindrop"] 6
+assign [class="Spark"] 6
+assign [title="Spark"] 6
+assign [class="Thunderbird"] 6
+assign [class="thunderbird"] 6
+
+# Floating Apps: finder, preview (equivalents)
+for_window [class="Thunar"] floating enable
+for_window [class="Nautilus"] floating enable
+for_window [class="Evince"] floating enable
+for_window [class="Atril"] floating enable
 
 # Tokyo Night colors
 set $bg-color            #1a1b26
@@ -209,12 +280,11 @@ client.unfocused        $text-color  	    $inactive-bg-color  $inactive-text-col
 client.focused_inactive $text-color	    $inactive-bg-color  $inactive-text-color $inactive-bg-color $text-color
 client.urgent           $urgent-bg-color    $urgent-bg-color    $text-color          $urgent-bg-color   $urgent-bg-color
 
-# Gaps 
-gaps inner 35
-gaps outer 15
+# Gaps (matching AeroSpace's 20px gaps)
+gaps inner 20
+gaps outer 20
 gaps top 50
 smart_gaps off
 
 for_window [class="^.*"] border pixel 3
 for_window [class="polybar"] border pixel 0
-
