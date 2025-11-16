@@ -1,5 +1,3 @@
-tap 'homebrew/cask'
-tap 'homebrew/cask-fonts'
 brew "awscli"
 brew "bat"
 brew "htop"
