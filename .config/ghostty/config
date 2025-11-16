@@ -1,0 +1,6 @@
+theme = Catppuccin Mocha
+font-family = Monaco
+font-size = 13
+
+background-opacity = 0.95
+background-blur = true
