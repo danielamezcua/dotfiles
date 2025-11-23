@@ -61,6 +61,8 @@ alias gcb="git branch | fzf --preview 'git show --color=always {-1}' \
                  --height 40% --layout reverse"
 alias ls="ls --color=auto"
 
+bindkey "^[[A" history-search-backward
+bindkey "^[[B" history-search-forward
 
 # CMD HISTORY
 HISTSIZE=5000
