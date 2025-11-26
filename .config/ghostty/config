@@ -1,6 +1,9 @@
 theme = Catppuccin Mocha
 font-family = Monaco
 font-size = 13
+font-thicken = true
+macos-titlebar-style = hidden
+
 
 background-opacity = 0.95
 background-blur = true
