@@ -5,7 +5,7 @@
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
   # JankyBorders
-  'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0'
+  #'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0'
 ]
 
 
@@ -149,8 +149,7 @@ automatically-unhide-macos-hidden-apps = false
     cmd-h = [] # Disable "hide application"
     cmd-alt-h = [] # Disable "hide others"
 
-    alt-d = "exec-and-forget osascript -e 'tell application \"System Events\" to keystroke space using command down'"
-    alt-space = "exec-and-forget osascript -e 'tell application \"System Events\" to keystroke space using command down'"
+    alt-d = 'exec-and-forget open -a "Raycast"'
     alt-enter = 'exec-and-forget open -a /Appllications/Ghostty.app'
 
 # 'service' binding mode declaration.
@@ -177,6 +176,11 @@ automatically-unhide-macos-hidden-apps = false
 [[on-window-detected]]
   if.app-name-regex-substring = "Cursor"
   run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+  if.app-id = "com.microsoft.VSCode"
+  run = 'move-node-to-workspace 1'
+
 
 # Workspace 2: Browser/Terminal
 [[on-window-detected]]
