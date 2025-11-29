@@ -1,0 +1,118 @@
+* {
+  font:   "DejaVu Sans Mono 18";
+
+  /* Gruvbox Dark Colors */
+  bg0     : #282828; /* Dark background */
+  bg1     : #3c3836; /* Darker background */
+  bg2     : #504945; /* Selection background */
+  bg3     : #665c54; /* Comments, invisibles, line highlighting */
+  fg0     : #fbf1c7; /* Primary foreground */
+  fg1     : #ebdbb2; /* Secondary foreground */
+  fg2     : #d5c4a1; /* Tertiary foreground */
+  red     : #fb4934; /* Red */
+  green   : #b8bb26; /* Green */
+  yellow  : #fabd2f; /* Yellow */
+  blue    : #83a598; /* Blue */
+  magenta : #d3869b; /* Magenta/Purple */
+  cyan    : #8ec07c; /* Cyan/Aqua */
+
+  accent: @magenta;
+  urgent: @yellow;
+
+  background-color : transparent;
+  text-color       : @fg0;
+
+  margin  : 0;
+  padding : 0;
+  spacing : 0;
+}
+
+element-icon, element-text, scrollbar {
+  cursor: pointer;
+}
+
+window {
+  width    : 25%;
+  location: north;
+  anchor: north;
+  y-offset: 400px;
+  x-offset: 0px;
+
+  background-color: @bg1;
+  border: 1px;
+  border-color: @bg3;
+  border-radius: 10px;
+}
+
+inputbar {
+  spacing  : 8px;
+  padding  : 8px 8px;
+  children : [ icon-search, entry ];
+
+  background-color: @bg0;
+}
+
+icon-search, entry, element-icon, element-text {
+  vertical-align: 0.5;
+}
+
+icon-search {
+  expand   : false;
+  filename : "search-symbolic";
+  size     : 30px;
+}
+
+textbox {
+  padding          : 4px 8px;
+  background-color : @bg2;
+}
+
+listview {
+  padding      : 4px 0px;
+  lines        : 12;
+  columns      : 1;
+  scrollbar    : true;
+  fixed-height : false;
+  dynamic      : true;
+  require-input: true;
+}
+
+element {
+  padding : 4px 8px;
+  spacing : 8px;
+}
+
+element normal urgent {
+  text-color: @urgent;
+}
+
+element normal active {
+  text-color: @accent;
+}
+
+element alternate active {
+  text-color: @accent;
+}
+
+element selected {
+  text-color       : @bg1;
+  background-color : @accent;
+}
+
+element selected urgent {
+  background-color: @urgent;
+}
+
+element-icon {
+  size: 1.5em;
+}
+
+element-text {
+  text-color: inherit;
+}
+
+scrollbar {
+  handle-width : 4px;
+  handle-color : @fg2;
+  padding      : 0 4px;
+}
