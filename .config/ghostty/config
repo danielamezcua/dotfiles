@@ -1,9 +1,9 @@
-theme = Catppuccin Mocha
-font-family = Monaco
-font-size = 13
-font-thicken = true
 macos-titlebar-style = hidden
-
-
+gtk-titlebar = false
 background-opacity = 0.95
 background-blur = true
+font-size = 13
+font-thicken = true
+
+
+config-file = ~/.config/ghostty/local.config
