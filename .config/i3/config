@@ -27,6 +27,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+# DICTATION
+bindsym Mod1+space exec --no-startup-id dictate
+
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
 set $up k
@@ -262,6 +265,10 @@ for_window [class="Thunar"] floating enable
 for_window [class="Nautilus"] floating enable
 for_window [class="Evince"] floating enable
 for_window [class="Atril"] floating enable
+for_window [class="Emulator"] floating enable
+for_window [class="qemu-system-x86_64"] floating enable
+for_window [class="Emulator"] border normal
+
 
 # Catppuccin Mocha colors
 set $bg-color            #1e1e2e
