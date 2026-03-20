@@ -33,6 +33,9 @@ exec waypaper --restore
 
 # ─── Autostart ────────────────────────────────────────────────────────────────
 
+# Export Wayland env vars so xdg-desktop-portal (file dialogs, etc.) works
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP=sway
+
 exec --no-startup-id dex-autostart --autostart --environment sway
 exec --no-startup-id nm-applet --indicator
 exec --no-startup-id dunst
@@ -225,9 +228,11 @@ assign [app_id="windsurf"] 1
 # Workspace 2: Browser / Terminal
 assign [app_id="ghostty"]        2
 assign [class="Ghostty"]         2
+assign [app_id="kitty"]          2
 assign [class="kitty"]           2
 assign [app_id="org.mozilla.firefox"] 2
 assign [class="Firefox"]         2
+assign [app_id="google-chrome"]  2
 assign [class="Google-chrome"]   2
 assign [class="Chromium"]        2
 
@@ -248,13 +253,13 @@ assign [app_id="slack"] 5
 assign [class="Raindrop"]    6
 assign [class="Spark"]       6
 assign [class="Thunderbird"] 6
-assign [app_id="thunderbird"] 6
+assign [app_id="net.thunderbird.Thunderbird"] 6
 
 # ─── Floating Windows ─────────────────────────────────────────────────────────
 
 for_window [app_id="thunar"]   floating enable
 for_window [class="Thunar"]    floating enable
-for_window [app_id="nautilus"] floating enable
+for_window [app_id="org.gnome.Nautilus"] floating enable
 for_window [class="Nautilus"]  floating enable
 for_window [class="Evince"]    floating enable
 for_window [class="Atril"]     floating enable
@@ -263,7 +268,7 @@ for_window [class="qemu-system-x86_64"] floating enable
 for_window [class="Emulator"]  border normal
 
 # Scratchpad apps
-for_window [app_id="gnome-calculator"] floating enable, resize set 300 400, move scratchpad, scratchpad show
+for_window [app_id="org.gnome.Calculator"] floating enable, resize set 300 400, move scratchpad, scratchpad show
 for_window [class="gnome-calculator"]  floating enable, resize set 300 400, move scratchpad, scratchpad show
 
 # ─── Colors (Catppuccin Mocha) ────────────────────────────────────────────────
