@@ -1,0 +1,136 @@
+[
+// ─── Main Bar ────────────────────────────────────────────────────────────────
+{
+    "name": "main",
+    "layer": "top",
+    "position": "top",
+    "height": 36,
+    "exclusive": true,
+    "margin-top": 20,
+    "margin-bottom": 0,
+    "margin-left": 700,
+    "margin-right": 700,
+
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["clock"],
+    "modules-right": ["disk", "memory", "cpu", "temperature", "pulseaudio", "bluetooth", "network", "sway/language", "idle_inhibitor", "tray", "custom/power"],
+
+    // ─── Left ─────────────────────────────────────────────────────────────────
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}"
+    },
+
+    "sway/mode": {
+        "format": "<span style='italic'>{}</span>"
+    },
+
+    // ─── Center ───────────────────────────────────────────────────────────────
+
+    "clock": {
+        "timezone": "America/Mexico_City",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%H:%M}",
+        "format-alt": "{:%Y-%m-%d %H:%M:%S}"
+    },
+
+    // ─── Right ────────────────────────────────────────────────────────────────
+
+    "disk": {
+        "format": "󰋊 {percentage_used}%",
+        "path": "/",
+        "interval": 25
+    },
+
+    "memory": {
+        "format": "󰍛 {percentage}%",
+        "interval": 2
+    },
+
+    "cpu": {
+        "format": "󰙴 {usage}%",
+        "interval": 2
+    },
+
+    "temperature": {
+        "format": "󰔏 {temperatureC}°C",
+        "format-critical": "󰔏 {temperatureC}°C",
+        "critical-threshold": 80,
+        "interval": 5
+    },
+
+    "pulseaudio": {
+        "format": "󰕾 {volume}%",
+        "format-muted": "󰖁 muted",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "scroll-step": 5
+    },
+
+    "bluetooth": {
+        "format": "󰂯",
+        "format-connected": "󰂱 {device_alias}",
+        "format-disabled": "󰂲",
+        "tooltip-format": "{controller_alias}\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "blueman-manager"
+    },
+
+    "network": {
+        "format-wifi": "󰤨 {essid}",
+        "format-ethernet": "󰈀 {ipaddr}",
+        "format-disconnected": "󰤭 offline",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}\n{gwaddr}",
+        "on-click": "nm-connection-editor"
+    },
+
+    "sway/language": {
+        "format": " {short}"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰅶",
+            "deactivated": "󰛊"
+        },
+        "tooltip-format-activated": "Idle inhibitor: on",
+        "tooltip-format-deactivated": "Idle inhibitor: off"
+    },
+
+    "tray": {
+        "spacing": 16
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "wlogout -b 2"
+    }
+},
+
+// ─── Cava Visualizer ─────────────────────────────────────────────────────────
+{
+    "name": "cava",
+    "layer": "top",
+    "position": "top",
+    "height": 36,
+    "exclusive": false,
+    "margin-top": -38,
+    "margin-right": 20,
+    "margin-left": 2380,
+
+    "modules-center": ["custom/cava"],
+
+    "custom/cava": {
+        "exec": "~/.config/waybar/cava-waybar.sh",
+        "return-type": "json",
+        "tooltip": false
+    }
+}
+]

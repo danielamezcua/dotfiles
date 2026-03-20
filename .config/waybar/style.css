@@ -1,0 +1,170 @@
+/* Catppuccin Mocha — floating bar */
+@define-color background #1e1e2e;
+@define-color surface0   #313244;
+@define-color foreground #cdd6f4;
+@define-color primary    #f38ba8;
+@define-color secondary  #cba6f7;
+@define-color disabled   #6c7086;
+@define-color border     #45475a;
+
+* {
+    font-family: "CaskaydiaCove Nerd Font", "Cascadia Code", monospace;
+    font-size: 10pt;
+    font-weight: bold;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: @foreground;
+}
+
+window#waybar > box {
+    background-color: @background;
+    border-radius: 14px;
+    border: 1px solid @border;
+}
+
+/* ─── Module Groups ──────────────────────────────────────────────────── */
+
+.modules-left,
+.modules-center,
+.modules-right {
+    background-color: transparent;
+    padding: 0 6px;
+}
+
+/* ─── Workspaces ─────────────────────────────────────────────────────── */
+
+#workspaces {
+    margin: 0 2px;
+}
+
+#workspaces button {
+    padding: 4px 10px;
+    margin: 4px 0;
+    color: @disabled;
+    background-color: transparent;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    background-color: @surface0;
+    color: @foreground;
+}
+
+#workspaces button.focused {
+    background-color: @surface0;
+    color: @secondary;
+}
+
+#workspaces button.urgent {
+    background-color: @primary;
+    color: @background;
+}
+
+/* ─── Mode ───────────────────────────────────────────────────────────── */
+
+#mode {
+    color: @primary;
+    padding: 0 8px;
+    font-style: italic;
+}
+
+/* ─── Clock (center) ─────────────────────────────────────────────────── */
+
+#clock {
+    color: @background;
+    padding: 4px 14px;
+    margin: 4px 0;
+    background-color: @foreground;
+    border-radius: 10px;
+}
+
+/* ─── Right Modules ──────────────────────────────────────────────────── */
+
+#disk,
+#pulseaudio,
+#language,
+#memory,
+#cpu,
+#temperature,
+#bluetooth,
+#network,
+#idle_inhibitor {
+    padding: 0 10px;
+    color: @foreground;
+}
+
+#pulseaudio.muted {
+    color: @disabled;
+}
+
+#network.disconnected {
+    color: @disabled;
+}
+
+#bluetooth.disabled {
+    color: @disabled;
+}
+
+#temperature.critical {
+    color: @primary;
+}
+
+#idle_inhibitor.activated {
+    color: @secondary;
+}
+
+#idle_inhibitor.deactivated {
+    color: @disabled;
+}
+
+#language {
+    color: @secondary;
+}
+
+#custom-power {
+    padding: 0 10px;
+    color: @secondary;
+}
+
+/* ─── Tray ───────────────────────────────────────────────────────────── */
+
+#tray {
+    padding: 0 6px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @primary;
+    border-radius: 10px;
+}
+
+/* ─── Cava Visualizer Bar ───────────────────────────────────────────── */
+
+window#waybar.cava {
+    background: transparent;
+}
+
+window#waybar.cava > box {
+    background-color: @background;
+    border-radius: 14px;
+    border: 1px solid @border;
+}
+
+#custom-cava {
+    color: @secondary;
+    padding: 4px 12px;
+    letter-spacing: 3px;
+    font-size: 11pt;
+}
