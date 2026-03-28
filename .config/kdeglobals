@@ -1,0 +1,144 @@
+[$Version]
+update_info=filepicker.upd:filepicker-remove-old-previews-entry,fonts_global.upd:Fonts_Global,fonts_global_toolbar.upd:Fonts_Global_Toolbar,icons_remove_effects.upd:IconsRemoveEffects,kwin.upd:animation-speed,style_widgetstyle_default_breeze.upd:StyleWidgetStyleDefaultBreeze
+
+[ColorEffects:Disabled]
+Color=50,48,47
+ColorAmount=0.55
+ColorEffect=3
+ContrastAmount=0.65
+ContrastEffect=1
+IntensityAmount=0.1
+IntensityEffect=2
+
+[ColorEffects:Inactive]
+ChangeSelectionColor=true
+Color=50,48,47
+ColorAmount=0.025
+ColorEffect=2
+ContrastAmount=0.1
+ContrastEffect=2
+Enable=false
+IntensityAmount=0
+IntensityEffect=0
+
+[Colors:Button]
+BackgroundAlternate=60,56,54
+BackgroundNormal=60,56,54
+DecorationFocus=131,165,152
+DecorationHover=250,189,47
+ForegroundActive=250,189,47
+ForegroundInactive=168,153,132
+ForegroundLink=131,165,152
+ForegroundNegative=251,73,52
+ForegroundNeutral=254,128,25
+ForegroundNormal=235,219,178
+ForegroundPositive=184,187,38
+ForegroundVisited=211,134,155
+
+[Colors:Selection]
+BackgroundAlternate=69,133,136
+BackgroundNormal=69,133,136
+DecorationFocus=131,165,152
+DecorationHover=250,189,47
+ForegroundActive=250,189,47
+ForegroundInactive=213,196,161
+ForegroundLink=131,165,152
+ForegroundNegative=251,73,52
+ForegroundNeutral=254,128,25
+ForegroundNormal=251,241,199
+ForegroundPositive=184,187,38
+ForegroundVisited=211,134,155
+
+[Colors:Tooltip]
+BackgroundAlternate=40,40,40
+BackgroundNormal=40,40,40
+DecorationFocus=131,165,152
+DecorationHover=250,189,47
+ForegroundActive=250,189,47
+ForegroundInactive=168,153,132
+ForegroundLink=131,165,152
+ForegroundNegative=251,73,52
+ForegroundNeutral=254,128,25
+ForegroundNormal=235,219,178
+ForegroundPositive=184,187,38
+ForegroundVisited=211,134,155
+
+[Colors:View]
+BackgroundAlternate=60,56,54
+BackgroundNormal=50,48,47
+DecorationFocus=131,165,152
+DecorationHover=250,189,47
+ForegroundActive=250,189,47
+ForegroundInactive=168,153,132
+ForegroundLink=131,165,152
+ForegroundNegative=251,73,52
+ForegroundNeutral=254,128,25
+ForegroundNormal=235,219,178
+ForegroundPositive=184,187,38
+ForegroundVisited=211,134,155
+
+[Colors:Window]
+BackgroundAlternate=50,48,47
+BackgroundNormal=50,48,47
+DecorationFocus=131,165,152
+DecorationHover=250,189,47
+ForegroundActive=250,189,47
+ForegroundInactive=168,153,132
+ForegroundLink=131,165,152
+ForegroundNegative=251,73,52
+ForegroundNeutral=254,128,25
+ForegroundNormal=235,219,178
+ForegroundPositive=184,187,38
+ForegroundVisited=211,134,155
+
+[DirSelect Dialog]
+DirSelectDialog Size=845,578
+History Items[$e]=file:$HOME/Downloads/Relax-Kvantum,file:$HOME/Desktop/Layan
+
+[General]
+BrowserApplication=google-chrome.desktop
+ColorScheme=GruvboxDarkSoft
+XftHintStyle=hintslight
+XftSubPixel=rgb
+fixed=FiraCode Nerd Font Mono,10,-1,5,53,0,0,0,0,0,Retina
+font=FiraCode Nerd Font Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+menuFont=FiraCode Nerd Font Propo Med,10,-1,5,500,0,0,0,0,0,0,0,0,0,0,1,Regular
+smallestReadableFont=FiraCode Nerd Font,8,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+toolBarFont=FiraCode Nerd Font Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+
+[Icons]
+Theme=Tela-dark
+
+[Cursors]
+Theme=Bibata-Modern-Ice
+Size=28
+
+[KDE]
+LookAndFeelPackage=org.magpie.psion.desktop
+widgetStyle=Breeze
+
+[KFileDialog Settings]
+Allow Expansion=false
+Automatically select filename extension=true
+Breadcrumb Navigation=true
+Decoration position=2
+Show Full Path=false
+Show Inline Previews=true
+Show Preview=false
+Show Speedbar=true
+Show hidden files=true
+Sort by=Name
+Sort directories first=true
+Sort hidden files last=false
+Sort reversed=false
+Speedbar Width=154
+View Style=Simple
+
+[WM]
+activeBackground=50,48,47
+activeBlend=50,48,47
+activeFont=FiraCode Nerd Font Propo SemBd,10,-1,5,600,0,0,0,0,0,0,0,0,0,0,1,Regular
+activeForeground=235,219,178
+inactiveBackground=40,40,40
+inactiveBlend=40,40,40
+inactiveForeground=168,153,132

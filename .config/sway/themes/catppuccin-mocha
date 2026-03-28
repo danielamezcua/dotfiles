@@ -1,0 +1,9 @@
+# Catppuccin Mocha
+set $bg-color            #1e1e2e
+set $inactive-bg-color   #313244
+set $text-color          #cdd6f4
+set $inactive-text-color #6c7086
+set $urgent-bg-color     #f38ba8
+set $indicator-color     #89b4fa
+set $unfocused-color     #585b70
+set $focused-color       #cba6f7

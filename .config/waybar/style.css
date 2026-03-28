@@ -1,11 +1,4 @@
-/* Catppuccin Mocha — floating bar */
-@define-color background #1e1e2e;
-@define-color surface0   #313244;
-@define-color foreground #cdd6f4;
-@define-color primary    #f38ba8;
-@define-color secondary  #cba6f7;
-@define-color disabled   #6c7086;
-@define-color border     #45475a;
+@import 'themes/gruvbox-dark-soft.css';
 
 * {
     font-family: "CaskaydiaCove Nerd Font", "Cascadia Code", monospace;

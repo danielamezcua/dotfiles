@@ -1,7 +1,7 @@
 configuration {
     modi: "drun";
     font: "Cascadia Code 32";
-    icon-theme: "Papirus-Dark";
+    icon-theme: "Tela-dark";
     show-icons: true;
     terminal: "kitty";
     drun-display-format: "{icon} {name}";

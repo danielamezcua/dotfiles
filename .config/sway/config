@@ -26,6 +26,8 @@ input "YOUR_LOGITECH_DEVICE_ID" {
     pointer_accel -0.8
 }
 
+seat seat0 xcursor_theme Bibata-Modern-Ice 28
+
 # ─── Output / Wallpaper ───────────────────────────────────────────────────────
 
 # Wallpaper (waypaper — GUI picker like nitrogen, uses swaybg backend)
@@ -271,16 +273,9 @@ for_window [class="Emulator"]  border normal
 for_window [app_id="org.gnome.Calculator"] floating enable, resize set 300 400, move scratchpad, scratchpad show
 for_window [class="gnome-calculator"]  floating enable, resize set 300 400, move scratchpad, scratchpad show
 
-# ─── Colors (Catppuccin Mocha) ────────────────────────────────────────────────
+# ─── Colors ───────────────────────────────────────────────────────────────────
 
-set $bg-color            #1e1e2e
-set $inactive-bg-color   #313244
-set $text-color          #cdd6f4
-set $inactive-text-color #6c7086
-set $urgent-bg-color     #f38ba8
-set $indicator-color     #89b4fa
-set $unfocused-color     #585b70
-set $focused-color       #cba6f7
+include ~/.config/sway/themes/gruvbox-dark-soft
 
 # class                 border           background         text                  indicator          child_border
 client.focused          $focused-color   $inactive-bg-color $text-color           $indicator-color   $focused-color

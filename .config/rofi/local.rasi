@@ -1,5 +1,5 @@
 /* Setup 1 */
-@theme "simple-catppuccin"
+/* @theme "simple-catppuccin" */
 
 /* Setup 2 */
-/* @theme "gruvbox-dark" */
+@theme "gruvbox-dark-soft"
