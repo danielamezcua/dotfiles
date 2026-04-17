@@ -20,9 +20,7 @@ input * {
     xkb_options grp:win_space_toggle
 }
 
-# Mouse speed — replace "Logitech USB Receiver" with your actual device name
-# Run `swaymsg -t get_inputs` to find the exact identifier
-input "YOUR_LOGITECH_DEVICE_ID" {
+input "type:pointer" {
     pointer_accel -0.8
 }
 
@@ -32,37 +30,36 @@ seat seat0 xcursor_theme Bibata-Modern-Ice 28
 
 # Wallpaper (waypaper — GUI picker like nitrogen, uses swaybg backend)
 exec waypaper --restore
+output DP-2 mode 2560x1440@165Hz
 
 # ─── Autostart ────────────────────────────────────────────────────────────────
 
 # Export Wayland env vars so xdg-desktop-portal (file dialogs, etc.) works
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP=sway
 
-exec --no-startup-id dex-autostart --autostart --environment sway
-exec --no-startup-id nm-applet --indicator
-exec --no-startup-id dunst
+exec dex-autostart --autostart --environment sway
+exec nm-applet --indicator
+exec dunst
 exec_always killall waybar; waybar
 
 # Screen lock with swayidle + swaylock (replaces xss-lock + i3lock)
 exec swayidle -w \
-    timeout 300 'swaylock -c 000000' \
+    timeout 300 'swaylock -f -c 000000' \
     timeout 600 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
     timeout 1800 'systemctl suspend' \
-    before-sleep 'swaylock -c 000000'
+    before-sleep 'swaylock -f -c 000000'
 
 # ─── Volume (PulseAudio / pactl) ──────────────────────────────────────────────
 
-set $refresh_status killall -SIGUSR1 i3status
-
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_status
-bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_status
-bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_status
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioMute        exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute     exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # ─── Dictation ────────────────────────────────────────────────────────────────
 
-bindsym Mod1+space exec --no-startup-id dictate
+bindsym Mod1+Shift+space exec $HOME/.local/bin/dictate
 
 # ─── Core Behavior ────────────────────────────────────────────────────────────
 
@@ -80,7 +77,7 @@ bindsym $mod+Shift+q kill
 
 # App launcher
 bindsym $mod+d      exec "rofi -modi drun,run -show drun"
-bindsym $mod+Tab    exec --no-startup-id rofi -show window
+bindsym $mod+Tab    exec rofi -show window
 
 # Focus (vim keys)
 bindsym $mod+$left  focus left
@@ -132,7 +129,7 @@ bindsym $mod+equal  resize grow width 50px, resize grow height 50px
 bindsym $mod+minus  resize shrink width 50px, resize shrink height 50px
 
 # Screen lock (replaces i3lock)
-bindsym $mod+Shift+Escape exec swaylock -c 000000
+bindsym $mod+Shift+Escape exec swaylock -f -c 000000
 
 # Screenshots (grim + slurp — native Wayland)
 bindsym Print       exec grim - | wl-copy
@@ -170,9 +167,9 @@ mode "service" {
     bindsym f           floating toggle, mode "default"
     bindsym BackSpace   [con_id="__focused__"] kill, mode "default"
 
-    bindsym Down        exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
-    bindsym Up          exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
-    bindsym Shift+Down  exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 0%
+    bindsym Down        exec pactl set-sink-volume @DEFAULT_SINK@ -10%
+    bindsym Up          exec pactl set-sink-volume @DEFAULT_SINK@ +10%
+    bindsym Shift+Down  exec pactl set-sink-volume @DEFAULT_SINK@ 0%
 
     bindsym $mod+Shift+semicolon mode "default"
 }
@@ -268,6 +265,7 @@ for_window [class="Atril"]     floating enable
 for_window [class="Emulator"]  floating enable
 for_window [class="qemu-system-x86_64"] floating enable
 for_window [class="Emulator"]  border normal
+for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
 
 # Scratchpad apps
 for_window [app_id="org.gnome.Calculator"] floating enable, resize set 300 400, move scratchpad, scratchpad show
@@ -275,7 +273,7 @@ for_window [class="gnome-calculator"]  floating enable, resize set 300 400, move
 
 # ─── Colors ───────────────────────────────────────────────────────────────────
 
-include ~/.config/sway/themes/gruvbox-dark-soft
+include ~/.config/sway/themes/catppuccin-mocha
 
 # class                 border           background         text                  indicator          child_border
 client.focused          $focused-color   $inactive-bg-color $text-color           $indicator-color   $focused-color
