@@ -121,23 +121,23 @@ automatically-unhide-macos-hidden-apps = false
     alt-1 = 'workspace 1'
     alt-2 = 'workspace 2'
     alt-3 = 'workspace 3'
-    alt-4 = 'workspace 4'
-    alt-5 = 'workspace 5'
-    alt-6 = 'workspace 6'
-    alt-7 = 'workspace 7'
-    alt-8 = 'workspace 8'
-    alt-9 = 'workspace 9'
+    alt-q = 'workspace 4'
+    alt-w = 'workspace 5'
+    alt-e = 'workspace 6'
+    alt-a = 'workspace 7'
+    alt-s = 'workspace 8'
+    alt-d = 'workspace 9'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     alt-shift-1 = 'move-node-to-workspace 1'
     alt-shift-2 = 'move-node-to-workspace 2'
     alt-shift-3 = 'move-node-to-workspace 3'
-    alt-shift-4 = 'move-node-to-workspace 4'
-    alt-shift-5 = 'move-node-to-workspace 5'
-    alt-shift-6 = 'move-node-to-workspace 6'
-    alt-shift-7 = 'move-node-to-workspace 7'
-    alt-shift-8 = 'move-node-to-workspace 8'
-    alt-shift-9 = 'move-node-to-workspace 9'
+    alt-shift-q = 'move-node-to-workspace 4'
+    alt-shift-w = 'move-node-to-workspace 5'
+    alt-shift-e = 'move-node-to-workspace 6'
+    alt-shift-a = 'move-node-to-workspace 7'
+    alt-shift-s = 'move-node-to-workspace 8'
+    alt-shift-d = 'move-node-to-workspace 9'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
     alt-tab = 'workspace-back-and-forth'
@@ -149,8 +149,8 @@ automatically-unhide-macos-hidden-apps = false
     cmd-h = [] # Disable "hide application"
     cmd-alt-h = [] # Disable "hide others"
 
-    alt-d = 'exec-and-forget open -a "Raycast"'
-    alt-enter = 'exec-and-forget open -a /Appllications/Ghostty.app'
+    alt-space = 'exec-and-forget open -a "Raycast"'
+    alt-enter = 'exec-and-forget open -a /Applications/Ghostty.app'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -172,7 +172,7 @@ automatically-unhide-macos-hidden-apps = false
     up = 'volume up'
     shift-down = ['volume set 0', 'mode main']
 
-# Workspaced 1: IDE
+# Workspace 1: IDE
 [[on-window-detected]]
   if.app-name-regex-substring = "Cursor"
   run = 'move-node-to-workspace 1'
@@ -181,22 +181,16 @@ automatically-unhide-macos-hidden-apps = false
   if.app-id = "com.microsoft.VSCode"
   run = 'move-node-to-workspace 1'
 
-
-# Workspace 2: Browser/Terminal
 [[on-window-detected]]
-  if.app-name-regex-substring = "Ghostty"
-  run = 'move-node-to-workspace 2'
+  if.app-name-regex-substring = "Zed"
+  run = 'move-node-to-workspace 1'
 
-[[on-window-detected]]
-  if.app-id = "co.zeit.hyper"
-  run = 'move-node-to-workspace 2'
-
-
+# Workspace 2: Browsers
 [[on-window-detected]]
   if.app-id = "company.thebrowser.Browser"
   run = 'move-node-to-workspace 2'
 
-# Workspace 3: LLMs
+# Workspace 3: LLMs/AI coding
 [[on-window-detected]]
   if.app-id = "ai.elementlabs.lmstudio"
   run = 'move-node-to-workspace 3'
@@ -205,25 +199,29 @@ automatically-unhide-macos-hidden-apps = false
   if.app-id = "com.anthropic.claudefordesktop"
   run = 'move-node-to-workspace 3'
 
-# Workspace 4: Dev apps
 [[on-window-detected]]
-  if.app-id = "com.electron.dockerdesktop"
+  if.app-name-regex-substring = "Codex"
+  run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+  if.app-name-regex-substring = "T3 Code"
+  run = 'move-node-to-workspace 3'
+
+# Workspace 4: Terminal
+[[on-window-detected]]
+  if.app-name-regex-substring = "Ghostty"
   run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
-  if.app-id = "com.postmanlabs.mac"
+  if.app-id = "co.zeit.hyper"
   run = 'move-node-to-workspace 4'
 
-# Workspace 5: Slack/Linear
+# Workspace 5: Obsidian
 [[on-window-detected]]
-  if.app-id = "com.linear"
+  if.app-id = "md.obsidian"
   run = 'move-node-to-workspace 5'
 
-[[on-window-detected]]
-  if.app-id = "com.tinyspeck.slackmacgap"
-  run = 'move-node-to-workspace 5'
-
-# Workspace 6: Mail/Raindrop
+# Workspace 6: Email/Raindrop
 [[on-window-detected]]
   if.app-id = "io.raindrop.macapp"
   run = 'move-node-to-workspace 6'
@@ -231,6 +229,19 @@ automatically-unhide-macos-hidden-apps = false
 [[on-window-detected]]
   if.app-name-regex-substring = "Spark"
   run = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
+  if.app-id = "com.apple.mail"
+  run = 'move-node-to-workspace 6'
+
+# Workspace 7: Slack/Linear
+[[on-window-detected]]
+  if.app-id = "com.linear"
+  run = 'move-node-to-workspace 7'
+
+[[on-window-detected]]
+  if.app-id = "com.tinyspeck.slackmacgap"
+  run = 'move-node-to-workspace 7'
 
 
 # Floating Apps: finder, preview
