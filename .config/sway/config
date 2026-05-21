@@ -73,7 +73,7 @@ tiling_drag_threshold 0
 bindsym $mod+Return exec ghostty
 
 # Kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+Shift+x kill
 
 # App launcher
 bindsym $mod+d      exec "rofi -modi drun,run -show drun"
@@ -118,7 +118,7 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+f floating toggle
 
 # Focus parent
-bindsym $mod+a focus parent
+bindsym $mod+Shift+p focus parent
 
 # Scratchpad
 bindsym $mod+Shift+grave move scratchpad
@@ -138,7 +138,7 @@ bindsym Shift+Print exec grim -g "$(slurp)" - | wl-copy
 # Reload / restart / exit
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r reload
-bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway?' -B 'Yes, exit' 'swaymsg exit'
+bindsym $mod+Shift+Ctrl+e exec swaynag -t warning -m 'Exit Sway?' -B 'Yes, exit' 'swaymsg exit'
 
 # ─── Resize Mode ──────────────────────────────────────────────────────────────
 
@@ -197,8 +197,11 @@ bindsym $mod+5 workspace number $ws5
 bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+bindsym $mod+q workspace number $ws4
+bindsym $mod+w workspace number $ws5
+bindsym $mod+e workspace number $ws6
+bindsym $mod+a workspace number $ws7
+bindsym $mod+s workspace number $ws8
 
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
@@ -208,8 +211,10 @@ bindsym $mod+Shift+5 move container to workspace number $ws5
 bindsym $mod+Shift+6 move container to workspace number $ws6
 bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+w move container to workspace number $ws5
+bindsym $mod+Shift+e move container to workspace number $ws6
+bindsym $mod+Shift+a move container to workspace number $ws7
+bindsym $mod+Shift+s move container to workspace number $ws8
 
 # ─── Window Assignments ───────────────────────────────────────────────────────
 # Note: Wayland-native apps use app_id, XWayland apps still use class.
