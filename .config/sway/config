@@ -74,6 +74,7 @@ bindsym $mod+Return exec ghostty
 
 # Kill focused window
 bindsym $mod+Shift+x kill
+bindsym $mod+Shift+q kill
 
 # App launcher
 bindsym $mod+d      exec "rofi -modi drun,run -show drun"
@@ -221,43 +222,69 @@ bindsym $mod+Shift+s move container to workspace number $ws8
 # Run `swaymsg -t get_tree` to find the correct app_id or class for each app.
 
 # Workspace 1: IDE
-assign [class="Cursor"]    1
-assign [class="Code"]      1
-assign [class="VSCodium"]  1
-assign [class="Windsurf"]  1
-assign [app_id="cursor"]   1
-assign [app_id="code"]     1
-assign [app_id="windsurf"] 1
+assign [class="Cursor"]     1
+assign [class="cursor"]     1
+assign [class="Code"]       1
+assign [class="code"]       1
+assign [class="VSCodium"]   1
+assign [class="Windsurf"]   1
+assign [class="windsurf"]   1
+assign [class="Zed"]        1
+assign [class="zed"]        1
+assign [app_id="cursor"]    1
+assign [app_id="code"]      1
+assign [app_id="windsurf"]  1
+assign [app_id="dev.zed.Zed"] 1
 
-# Workspace 2: Browser / Terminal
-assign [app_id="ghostty"]        2
-assign [class="Ghostty"]         2
-assign [app_id="kitty"]          2
-assign [class="kitty"]           2
+# Workspace 2: Browsers
+assign [class="Arc"]                 2
+assign [title="Arc"]                 2
 assign [app_id="org.mozilla.firefox"] 2
-assign [class="Firefox"]         2
-assign [app_id="google-chrome"]  2
-assign [class="Google-chrome"]   2
-assign [class="Chromium"]        2
+assign [app_id="firefox"]            2
+assign [class="Firefox"]             2
+assign [class="firefox"]             2
+assign [app_id="google-chrome"]      2
+assign [class="Google-chrome"]       2
+assign [app_id="chromium"]           2
+assign [class="Chromium"]            2
+assign [class="chromium"]            2
 
-# Workspace 3: LLMs
+# Workspace 3: LLMs/AI coding
 assign [class="LM Studio"]  3
 assign [title="Claude"]     3
+assign [class="claude"]     3
+assign [class="Codex"]      3
+assign [class="codex"]      3
+assign [title="Codex"]      3
+assign [app_id="t3code"]    3
+for_window [app_id="t3code"] move container to workspace number 3
 
-# Workspace 4: Dev apps
-assign [class="Docker Desktop"] 4
-assign [class="Postman"]        4
+# Workspace 4: Terminal
+assign [app_id="ghostty"] 4
+assign [class="Ghostty"]  4
+assign [class="ghostty"]  4
+assign [app_id="kitty"]   4
+assign [class="kitty"]    4
+assign [class="Kitty"]    4
+assign [class="Hyper"]    4
 
-# Workspace 5: Slack / Linear
-assign [class="Linear"] 5
-assign [class="Slack"]  5
-assign [app_id="slack"] 5
+# Workspace 5: Obsidian
+assign [class="obsidian"] 5
+assign [class="Obsidian"] 5
+assign [app_id="md.obsidian.Obsidian"] 5
 
-# Workspace 6: Mail
+# Workspace 6: Mail/Raindrop
 assign [class="Raindrop"]    6
 assign [class="Spark"]       6
+assign [title="Spark"]       6
 assign [class="Thunderbird"] 6
+assign [class="thunderbird"] 6
 assign [app_id="net.thunderbird.Thunderbird"] 6
+
+# Workspace 7: Slack/Linear
+assign [class="Linear"] 7
+assign [class="Slack"]  7
+assign [app_id="slack"] 7
 
 # ─── Floating Windows ─────────────────────────────────────────────────────────
 
