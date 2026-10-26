@@ -1,0 +1,10 @@
+# Git status signs in the file list (git.yazi plugin, see init.lua)
+[[plugin.prepend_fetchers]]
+url   = "*"
+run   = "git"
+group = "git"
+
+[[plugin.prepend_fetchers]]
+url   = "*/"
+run   = "git"
+group = "git"
